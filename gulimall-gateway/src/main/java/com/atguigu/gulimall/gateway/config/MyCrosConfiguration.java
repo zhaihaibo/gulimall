@@ -14,7 +14,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 //在解决跨域问题时，可以使用springboot自带的一个解决跨域的接口 CorsWebFilter
 @Configuration
-public class CrosConfiguration {
+public class MyCrosConfiguration {
 
 
     @Bean
