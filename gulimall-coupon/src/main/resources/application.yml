@@ -5,8 +5,7 @@ spring:
     password: root
     url: jdbc:mysql://192.168.100.100:3306/gulimall_sms
     driver-class-name: com.mysql.jdbc.Driver
-  cloud:
-    nacos:
+e    nacos:
       discovery:
         server-addr: 127.0.0.1:8848
   application:
@@ -21,3 +20,7 @@ mybatis-plus:
       id-type: auto
 server:
   port: 7000
+
+user:
+  name1: 66666
+  age: 6666

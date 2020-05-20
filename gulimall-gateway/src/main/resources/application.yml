@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+#       路由名
+      - id: admin_route
+#          lb：负载均衡 路由到renren-fast服务
+          uri: lb://renren-fast
+#          断言：在什么情况时才路由给renren-fast服务
+#          所有带有api前缀的请求都发送到renren-fast服务
+          predicates:
+          - Path=/api/**
+#         因为renren-fast中默认请求前加的renren-fast，所以在配置了断言后还不能访问到对应的服务
+#          这就需要有网关中的路径重写：把api开头的请求转成 renren-fast开头的请求，filters
+          filters:
+          - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
