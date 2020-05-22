@@ -16,6 +16,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+#使用alibaba.cloud，可以直接在配置文件中配置kv
+    alicloud:
+      access-key: LTAI4GAbcV54pHi7RFfp4ujb
+      secret-key: n7uvcEi73hiUQz6BBlFrs9Mt3pc8Ka
+      oss:
+        endpoint: oss-cn-shenzhen.aliyuncs.com
 #扫描mapper文件
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -23,6 +29,12 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+#      logic-delete-value: 1 # 逻辑已删除值(默认为 1)  如果在bean上的逻辑删除注解上指定，就不需要添加此配置
+#      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 
 server:
   port: 10000
+
+logging:
+  level:
+    com.atguigu.gulimall.product: debug

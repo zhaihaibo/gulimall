@@ -50,7 +50,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -76,12 +76,17 @@ public class CategoryController {
     }
 
     /**
-     * 删除
+     *  批量逻辑删除
      */
     @RequestMapping("/delete")
    // @RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
 		categoryService.removeByIds(Arrays.asList(catIds));
+
+		//1.删除时首先检查当前菜单是否被别的地方引用
+
+        //2.执行删除
+		categoryService.removeMenuByIds(Arrays.asList(catIds));
 
         return R.ok();
     }
